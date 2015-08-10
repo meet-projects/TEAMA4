@@ -1,0 +1,33 @@
+<html>
+
+<body>
+
+<div>
+<br>
+<form action= "{{ url_for('add_status_b')}}">
+
+
+
+</div> 
+
+<h1> mydea</h1>
+<br>
+new mydea:
+<br>
+<textarea rows="5" cols="60">
+
+</textarea>
+
+<br>
+<br>
+choose a category: <br>
+<input type="radio" name="category" value="entrepreneurship"> Entrepreneurship <br>
+<input type="radio" name="category" value="community"> Community <br>
+<input type= submit value= "post"> <br>
+<a href="mydeas_wall.html">cancel</a>
+</form>
+
+
+</body>
+
+</html>

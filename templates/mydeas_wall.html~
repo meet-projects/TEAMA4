@@ -1,0 +1,12 @@
+<html>
+<body>
+<h1> mydeas: </h1>
+{%for s in status%}
+<div>
+<p>
+{{s.status}}
+</p>
+</div>
+{%endfor%}
+</body>
+</html>
