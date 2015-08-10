@@ -73,7 +73,7 @@ def add_status():
 	if request.method == 'GET':
 		return render_template('add_mydeas_page.html')
 	else:
-		print ("3######")
+		
 		if request.form['category']== 'entrepreneurship':
 			bc='b'
 		else:
@@ -84,10 +84,10 @@ def add_status():
 		##dop = request.form['dop'],
 ##		user_posted = request.form[user_id],
 		bc=bc)
-		print(444444)
+		
 		session.add(new_status)
 		session.commit()
-		print(55555)
+		
         	return redirect(url_for('wall'))
 
 @app.route('/delete/<int:status_id>', methods = ['GET', 'POST'])
