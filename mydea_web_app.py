@@ -32,7 +32,7 @@ def add_user():
 		password = request.form['password'])
 		session.add(new_user)
 		session.commit()
-		return redirect(url_for('main'))
+		return redirect(url_for('add_mydeas'))
 
 
 @app.route('/delete/<int:user_id>', methods = ['GET', 'POST'])
@@ -43,6 +43,15 @@ def delete_user(user_id):
     else: 
         session.delete(user)
         return redirect(url_for('wall'))
+
+@app.route('/add', methods = ['GET', 'POST'])
+def add_mydeas():
+	return render_template('add_mydeas_page.html')
+
+@app.route('/wall', methods = ['GET', 'POST'])
+def mydeas_wall():
+	return render_template('mydeas_wall.html')
+
 
 @app.route('/edit/<int:user_id>', methods=['GET', 'POST'])
 def edit_user(user_id):
