@@ -1,6 +1,12 @@
 <html>
-
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
 <body>
+
+
+<div class = fixed>
+<img src="{{ url_for('static', filename='logo.jpg') }}" alt="Mydea">
+</div>
+
 
 <div>
 <br>
@@ -12,6 +18,7 @@
 
 
 </div> 
+<div>
 <form action= "{{ url_for('add_status')}}" method="POST">
 <h1> mydea</h1>
 <br>
@@ -34,7 +41,7 @@ choose a category: <br>
 
 </form>
 <a href="mydeas_wall.html">cancel</a>
-
+</div>
 </body>
 
 </html>

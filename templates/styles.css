@@ -1,13 +1,12 @@
 body
 {
 background-image: url("http://static.splashnology.com/articles/45_Fresh_and_Free_Texture_Packs/48_Free_Old_White_Wood_Planks_Textures_by_ronenbekerman.com.jpg");
-color:#000000;
-font-size:150%;
-font-style:bold;
+color:#19BF96;
+font-size:100%;
 margin: 20px;
-font-family:"Comic Sans MS", cursive, sans-serif;
+font-family:"Comic Sans MS";
 width: auto;
-
+text-shadow: 2px 2px 4px #000000;
 }
 
 h1
@@ -18,7 +17,7 @@ text-decoration:none;
 text-align:center;
 text-shadow: 2px 2px 4px #000000;
 font-size:2.5em;
-font-family: "Comic Sans MS", cursive, sans-serif;
+font-family:"Comic Sans MS";
 }
 
 
@@ -28,7 +27,7 @@ a
 text-decoration: none;
 }
 
-/*for the buttons on every page*/
+#for the buttons
 .grow:hover
 {
         -webkit-transform: scale(1.3);
@@ -45,26 +44,19 @@ text-decoration: none;
         opacity:1;
 }
 
-/*for the logo on every page*/
+#for the logo on every page
 .fixed {
     position: fixed;
-    top: 0;
-    left: 0;
+    bottom: 0;
+    right: 0;
     width: 300px;
-    
+    border: 3px solid #8AC007;
 }
-div 
+
+#for the post divs
+.border:hover
 {
-	margin-left: auto;
-	margin-right: auto;
-	width:400px;
-	text-align:center;
-}
-/*for the post divs*/
-.border
-{
-	background-color: #CCFFFF;
-        box-shadow: inset 0 0 0 3px #19BF96;
+        box-shadow: inset 0 0 0 25px #53a7ea;
 }
 
 

@@ -1,11 +1,23 @@
 <html>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
 <body>
-<h1> mydeas: </h1>
+<center>
+<a href="{{ url_for('wall')}}">add mydea</a>
+</center>
+<div class = fixed>
+<img src="{{ url_for('static', filename='logo.jpg') }}" alt="Mydea">
+</div>
+<h1> mydeas </h1>
 {%for s in statuses%}
-<div>
+<div class = 'border'>
 <p>
 {{s.status}}
 </p>
+<form action= "{{ url_for('like_button', status_id=statuses[0].id)}}" >
+<input type="submit" value="Like">
+{{statuses[0].likes}}
+
+{{statuses[0].bc}}
 </div>
 {%endfor%}
 <table>
