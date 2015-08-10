@@ -4,19 +4,23 @@
 
 <div>
 <br>
-<form action= "{{ url_for('add_status')}}">
 
+
+
+
+<a href="{{ url_for('main_page')}}">Sign Out</a>
 
 
 </div> 
-
+<form action= "{{ url_for('add_status')}}">
 <h1> mydea</h1>
 <br>
 new mydea:
 <br>
-<textarea rows="5" cols="60">
+<textarea rows="5" cols="60"></textarea>
 
-</textarea>
+
+
 
 <br>
 <br>
@@ -25,6 +29,9 @@ choose a category: <br>
 <input type="radio" name="category" value="community"> Community <br>
 <input type= submit value= "post"> <br>
 <a href="mydeas_wall.html">cancel</a>
+
+
+
 </form>
 
 

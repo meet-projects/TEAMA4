@@ -20,10 +20,11 @@
 name: <input type = "text" name = "name"><br>
 password: <input type = "password" name = "password"><br>
 <input type="submit" value="Log in"><br>
-
+<<<<<<< HEAD
 <a href="{{ url_for('add_user')}}">dont have an account? sign up now!</a>
-
-
+=======
+<a href="sign_up_page.html">dont have an account? sign up now!</a>
+>>>>>>> 5c0cf2748978c8da87c7043f6263b0b7d6ea2b5b
 </form>
 </div>
 </body>
