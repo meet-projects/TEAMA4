@@ -42,13 +42,6 @@ repeat password: <input type= password name= "repeat password" > <br>
 </form>
 </div>
 
-
-
-<a href="{{ url_for('about_mydea') }}">Sign Up</a>
-
-<!-- <a href="{{ url_for('') }}">Sign Up</a> -->
-
-
 </body>
 
 </html>

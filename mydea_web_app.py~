@@ -20,6 +20,10 @@ def wall():
 	statuses = session.query(Status).all()
 	return render_template('mydeas_wall.html', statuses=statuses)
 
+@app.route('/add', methods = ['GET', 'POST'])
+def add_mydeas():
+	return render_template('add_mydeas_page.html')
+
 #user
 @app.route('/register_user', methods =['GET', 'POST'])
 def add_user():
@@ -44,6 +48,11 @@ def delete_user(user_id):
     else: 
         session.delete(user)
         return redirect(url_for('wall'))
+
+@app.route('/wall', methods = ['GET', 'POST'])
+def mydeas_wall():
+	return render_template('mydeas_wall.html')
+
 
 @app.route('/edit/<int:user_id>', methods=['GET', 'POST'])
 def edit_user(user_id):
