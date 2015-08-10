@@ -5,8 +5,8 @@
 <div>
 <br>
 <form>
-<input type= submit value= "Sign Out"> <br>
-<!-- <a href="{{ url_for('main_page.html')}}">Sign Out</a> -->
+<input type= submit value= "Sign Out"> <br>-->
+<a href="{{ url_for('main_page')}}">Sign Out</a>
 </form>
 
 </div> 
@@ -17,8 +17,7 @@
 <br>
 new mydea:
 <br>
-<textarea rows="5" cols="60">
-
+<textarea name= "mydea" rows="5" cols="60">
 </textarea>
 
 <br>
@@ -26,8 +25,8 @@ new mydea:
 choose a category: <br>
 <input type="radio" name="category" value="entrepreneurship"> entrepreneurship <br>
 <input type="radio" name="category" value="community"> community <br>
-<input type= submit value= "post"> <br>
-<a href="{{ url_for('mydeas_page')}}"> </a>
+<!--<input type= submit value= "post"> <br>-->
+<a href="{{ url_for('mydeas_page')}}">post</a>
 </form>
 
 
