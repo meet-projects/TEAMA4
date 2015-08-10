@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 from flask import Flask, render_template, request, redirect, url_for
 app = Flask(__name__)
 
@@ -12,42 +11,20 @@ DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
 
-=======
-from flask import Flask, render_template
-app = Flask(__name__)
-
-#SQLAlchemy stuff
-from mydea_database import Base, User #<--- Import your tables here!!
-from mydea_database import Base, StatusC
-from mydea_database import Base, StatusB
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-engine = create_engine('sqlite:///crudlab.db')
-Base.metadata.bind = engine
-DBSession = sessionmaker(bind=engine)
-session = DBSession()
-
->>>>>>> 5c0cf2748978c8da87c7043f6263b0b7d6ea2b5b
 @app.route('/')
 def main():
     return render_template('main_page.html')
 
-<<<<<<< HEAD
-@app.route('/wall')
+@app.route('/wall/')
 def wall():
-    return render_template('mydeas_wall.html')
+	statuses = session.query(Status).all()
+	return render_template('mydeas_wall.html', statuses=statuses)
 
-=======
->>>>>>> 5c0cf2748978c8da87c7043f6263b0b7d6ea2b5b
 #user
 @app.route('/register_user', methods =['GET', 'POST'])
 def add_user():
 	if request.method == 'GET':
-<<<<<<< HEAD
 		return render_template('sign_up_page.html')
-=======
-		return render_template('signuppage.html')
->>>>>>> 5c0cf2748978c8da87c7043f6263b0b7d6ea2b5b
 	else:
 		new_user = User(
 		name = request.form['name'],
@@ -55,11 +32,7 @@ def add_user():
 		password = request.form['password'])
 		session.add(new_user)
 		session.commit()
-<<<<<<< HEAD
 		return redirect(url_for('main'))
-=======
-		return redirect(url_for('about_mydea.html'))
->>>>>>> 5c0cf2748978c8da87c7043f6263b0b7d6ea2b5b
 
 
 @app.route('/delete/<int:user_id>', methods = ['GET', 'POST'])
@@ -69,11 +42,7 @@ def delete_user(user_id):
         return render_template('delete_user.html', user=user)
     else: 
         session.delete(user)
-<<<<<<< HEAD
         return redirect(url_for('wall'))
-=======
-        return redirect(url_for('mydea_wall.html'))
->>>>>>> 5c0cf2748978c8da87c7043f6263b0b7d6ea2b5b
 
 @app.route('/edit/<int:user_id>', methods=['GET', 'POST'])
 def edit_user(user_id):
@@ -88,7 +57,6 @@ def edit_user(user_id):
     	user.email = new_email
     	user.password = new_password	
     	session.commit()
-<<<<<<< HEAD
     	return redirect(url_for('wall'))
 #Status
 @app.route('/add', methods = ['GET', 'POST'])
@@ -96,6 +64,7 @@ def add_status():
 	if request.method == 'GET':
 		return render_template('add_mydeas_page.html')
 	else:
+		print ("3######")
 		if request.form['category']== 'entrepreneurship':
 			bc='b'
 		else:
@@ -103,13 +72,13 @@ def add_status():
 		new_status = Status(
 		status = request.form['status'],
 		likes = 0,
-		dop = request.form['dop'],
+		##dop = request.form['dop'],
 		user_posted = request.form[user_id],
 		bc=bc)
-		
-		
+		print(444444)
 		session.add(new_status)
 		session.commit()
+		print(55555)
         	return redirect(url_for('wall'))
 
 @app.route('/delete/<int:status_id>', methods = ['GET', 'POST'])
@@ -124,35 +93,6 @@ def delete_status(user_id):
 @app.route('/edit/<int:status_id>', methods=['GET', 'POST'])
 def edit_status(user_id):
     status = session.query(Status).filter_by(id=status_id).first()
-=======
-    	return redirect(url_for('mydea_wall.html'))
-#StatusC
-def add_status_c():
-	if request.method == 'GET':
-		return render_template('mydea_wall.html')
-	else:
-		new_status_c = StatusC(
-		status = request.form['status'],
-		likes = request.form ['likes'],
-		dop = request.form['dop'],
-		user_posted = request.form['user_posted'])
-		session.add(new_status_c)
-		session.commit()
-        	return redirect(url_for('mydea_wall.html'))
-
-@app.route('/delete/<int:status_id>', methods = ['GET', 'POST'])
-def delete_status_c(user_id):
-    status = session.query(StatusC).filter_by(id=StatusC_id).first()
-    if request.method == 'GET':
-        return render_template('mydea_wall.html', status=status)
-    else: 
-        session.delete(status)
-        return redirect(url_for('mydea_wall.html'))
-
-@app.route('/edit/<int:status_id>', methods=['GET', 'POST'])
-def edit_status_c(user_id):
-    status = session.query(StatusC).filter_by(id=status_id).first()
->>>>>>> 5c0cf2748978c8da87c7043f6263b0b7d6ea2b5b
     if request.method == 'GET':
     	return render_template('edit_status.html', status=status)
     else:
@@ -165,7 +105,6 @@ def edit_status_c(user_id):
     	user.dop = new_dop	
 	user.user_posted = new_user_posted
     	session.commit()
-<<<<<<< HEAD
     	return redirect(url_for('wall'))
 
 
@@ -182,47 +121,3 @@ def like_button (status_id):
 
 if __name__ == '__main__':
 	app.run(debug=True)
-=======
-    	return redirect(url_for('mydea_wall.html'))
-
-#StatusB
-def add_status_b():
-	if request.method == 'GET':
-		return render_template('mydea_wall.html')
-	else:
-		new_status_b = StatusB(
-		status = request.form['status'],
-		likes = request.form ['likes'],
-		dop = request.form['dop'],
-		user_posted = request.form['user_posted'])
-		session.add(new_status_b)
-		session.commit()
-        	return redirect(url_for('mydea_wall.html'))
-
-@app.route('/delete/<int:status_id>', methods = ['GET', 'POST'])
-def delete_status_b(user_id):
-    status = session.query(StatusB).filter_by(id=StatusB_id).first()
-    if request.method == 'GET':
-        return render_template('mydea_wall.html', status=status)
-    else: 
-        session.delete(status)
-        return redirect(url_for('mydea_wall.html'))
-
-@app.route('/edit/<int:status_id>', methods=['GET', 'POST'])
-def edit_status_b(user_id):
-    status = session.query(StatusB).filter_by(id=status_id).first()
-    if request.method == 'GET':
-    	return render_template('edit_status.html', status=status)
-    else:
-    	new_status = request.form['status']
-    	new_likes = request.form['likes']
-    	new_dop = request.form['dop']
-	new_user_posted = request.form['user_posted']
-    	user.status = new_status
-    	user.likes = new_likes
-    	user.dop = new_dop	
-	user.user_posted = new_user_posted
-    	session.commit()
-    	return redirect(url_for('mydea_wall.html'))
-
->>>>>>> 5c0cf2748978c8da87c7043f6263b0b7d6ea2b5b

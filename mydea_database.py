@@ -21,8 +21,8 @@ class Status(Base):
  	id = Column(Integer, primary_key=True)
 	status= Column(String)
 	likes= Column(Integer)
-	dop= Column(String)
-	user_posted= Column(Integer)
+	###dop= Column(String)
+	##user_posted= Column(Integer)
 	bc=Column(String(1))
 
 #class StatusB(Base): 

@@ -15,9 +15,10 @@ session = DBSession()
 def main():
     return render_template('main_page.html')
 
-@app.route('/wall')
+@app.route('/wall/')
 def wall():
-    return render_template('mydeas_wall.html')
+	statuses = session.query(Status).all()
+	return render_template('mydeas_wall.html', statuses=statuses)
 
 #user
 @app.route('/register_user', methods =['GET', 'POST'])
@@ -63,6 +64,7 @@ def add_status():
 	if request.method == 'GET':
 		return render_template('add_mydeas_page.html')
 	else:
+		print ("3######")
 		if request.form['category']== 'entrepreneurship':
 			bc='b'
 		else:
@@ -70,13 +72,13 @@ def add_status():
 		new_status = Status(
 		status = request.form['status'],
 		likes = 0,
-		dop = request.form['dop'],
-		user_posted = request.form[user_id],
+		##dop = request.form['dop'],
+##		user_posted = request.form[user_id],
 		bc=bc)
-		
-		
+		print(444444)
 		session.add(new_status)
 		session.commit()
+		print(55555)
         	return redirect(url_for('wall'))
 
 @app.route('/delete/<int:status_id>', methods = ['GET', 'POST'])

@@ -8,5 +8,10 @@
 </p>
 </div>
 {%endfor%}
+<table>
+<tr>
+<td>
+
+</table> 
 </body>
 </html>

@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 
-=======
->>>>>>> 5c0cf2748978c8da87c7043f6263b0b7d6ea2b5b
 from sqlalchemy import Column, Date, Float, ForeignKey, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship, sessionmaker
@@ -18,21 +15,14 @@ class User(Base):
 	password = Column(String)
 
 
-<<<<<<< HEAD
 class Status(Base): 
 
 	__tablename__ = 'statuses'
-=======
-class StatusC(Base): 
-
-	__tablename__ = 'statusC'
->>>>>>> 5c0cf2748978c8da87c7043f6263b0b7d6ea2b5b
  	id = Column(Integer, primary_key=True)
 	status= Column(String)
 	likes= Column(Integer)
-	dop= Column(String)
-	user_posted= Column(Integer)
-<<<<<<< HEAD
+	###dop= Column(String)
+	##user_posted= Column(Integer)
 	bc=Column(String(1))
 
 #class StatusB(Base): 
@@ -43,16 +33,5 @@ class StatusC(Base):
 #	likes= Column(Integer)
 #	dop= Column(Date)
 #	user_posted= Column(Integer)
-=======
-
-class StatusB(Base): 
-
-	__tablename__ = 'statusB'
- 	id = Column(Integer, primary_key=True)
-	status= Column(String)
-	likes= Column(Integer)
-	dop= Column(Date)
-	user_posted= Column(Integer)
->>>>>>> 5c0cf2748978c8da87c7043f6263b0b7d6ea2b5b
 
 
