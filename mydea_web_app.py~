@@ -10,19 +10,24 @@ Base.metadata.create_all(engine)
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
-
-@app.route('/')
+@app.route('/', methods =['GET', 'POST'])
 def main():
-    return render_template('main_page.html')
+	if request.method == 'GET':
+		return render_template('main_page.html')
+	else:
+		email = request.form['email']
+		password = request.form['password']
+		user = session.query(User).filter_by(email=email, password=password).first()
+		if user == None:
+			return redirect (url_for('main'))
+		return redirect (url_for('wall'))
 
 @app.route('/wall/')
 def wall():
 	statuses = session.query(Status).all()
 	return render_template('mydeas_wall.html', statuses=statuses)
 
-@app.route('/add', methods = ['GET', 'POST'])
-def add_mydeas():
-	return render_template('add_mydeas_page.html')
+
 
 #user
 @app.route('/register_user', methods =['GET', 'POST'])
@@ -30,14 +35,18 @@ def add_user():
 	if request.method == 'GET':
 		return render_template('sign_up_page.html')
 	else:
-		if "yes" in request.form.getlist("iagree"):
+		if 'iagree' in request.form and request.form['iagree'] == 'on':
+			if request.form['name']== '' or request.form ['email'] == ''or request.form['password']=='':
+				return redirect(url_for('add_user'))
 			new_user = User(
 			name = request.form['name'],
 			email = request.form ['email'],
 			password = request.form['password'])
 			session.add(new_user)
 			session.commit()
-			return redirect(url_for('main'))
+			return redirect(url_for('add_mydeas'))
+		else:
+ 			return redirect(url_for('add_user'))
 
 
 @app.route('/delete/<int:user_id>', methods = ['GET', 'POST'])
@@ -48,6 +57,10 @@ def delete_user(user_id):
     else: 
         session.delete(user)
         return redirect(url_for('wall'))
+
+@app.route('/add', methods = ['GET', 'POST'])
+def add_mydeas():
+	return render_template('add_mydeas_page.html')
 
 @app.route('/wall', methods = ['GET', 'POST'])
 def mydeas_wall():
