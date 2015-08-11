@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 app = Flask(__name__)
 
 #SQLAlchemy stuff
-from mydea_database import Base, User, Status #<--- Import your tables here!!
+from mydea_database import Base, User, Status, Comment #<--- Import your tables here!!
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 engine = create_engine('sqlite:///crudlab.db')
@@ -20,10 +20,11 @@ def main():
 		user = session.query(User).filter_by(email=email, password=password).first()
 		if user == None:
 			return redirect (url_for('main'))
-		return redirect (url_for('wall'))
+		return redirect (url_for('wall(user)'))
 
 @app.route('/wall/')
-def wall():
+def wall(user):
+	#session.query(User).filter_by(id=user_id).first()
 	statuses = session.query(Status).all()
 	return render_template('mydeas_wall.html', statuses=statuses)
 
@@ -96,7 +97,7 @@ def add_status():
 		status = request.form['status'],
 		likes = 0,
 		##dop = request.form['dop'],
-##		user_posted = request.form[user_id],
+		##user_posted = request.form[user_id],
 		bc=bc)
 		
 		session.add(new_status)

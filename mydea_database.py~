@@ -25,6 +25,15 @@ class Status(Base):
 	##user_posted= Column(Integer)
 	bc=Column(String(1))
 
+
+class Comment(Base): 
+
+	__tablename__ = 'comments'
+ 	id = Column(Integer, primary_key=True)
+	comment= Column(String)
+	user_posted = Column(Integer)
+
+
 #class StatusB(Base): 
 
 #	__tablename__ = 'statusB'
