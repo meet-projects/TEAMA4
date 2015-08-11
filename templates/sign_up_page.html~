@@ -1,6 +1,12 @@
 <html>
-
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
 <body>
+
+
+<div class = fixed>
+<img src="logo.jpg" alt="Mydea">
+</div>
+
 
 <h1> mydea </h1>
 <div>
@@ -23,20 +29,12 @@ By pressing the 'I Agree” button, you agree to: <br> <br>
 
 <li>Not sharing racist, homophobic or sexist mydeas. <br>
 
-<li>Not sharing traumatic issues ("boyfriend raped me") <br>
+<li>Not sharing traumatic issues <br>
 
-<li>Not sharing everyday emotional issues ("boyfriend dumped me")<br>
+<li>Not sharing everyday emotional issues <br>
 
 Act with respect and kindness to other users</p>
 <input type = "checkbox" name = "iagree"> I agree to Mydea terms and conditions<br>
-
-<h1> sign up </h1>
-<form>
-name: <input type= text name= "name" > <br>
-email: <input type= email name= "email" > <br>
-password: <input type= password name= "password" > <br>
-<!-- checking if the password and the repeat password are the same-->
-repeat password: <input type= password name= "repeat password" > <br>
 
 <input type="submit" value="Sign Up">
 </form>
