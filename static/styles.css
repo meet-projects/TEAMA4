@@ -1,3 +1,10 @@
+@font-face {
+    font-family: myFirstFont;
+    
+src: url(GosmickSans.ttf)
+}
+
+
 body
 {
 background-image: url("http://static.splashnology.com/articles/45_Fresh_and_Free_Texture_Packs/48_Free_Old_White_Wood_Planks_Textures_by_ronenbekerman.com.jpg");
@@ -5,7 +12,7 @@ color:#000000;
 font-size:150%;
 font-style:bold;
 margin: 20px;
-font-family:"Comic Sans MS", cursive, sans-serif;
+font-family: myFirstFont;
 width: auto;
 
 }
@@ -18,7 +25,8 @@ text-decoration:none;
 text-align:center;
 text-shadow: 2px 2px 4px #000000;
 font-size:2.5em;
-font-family: "Comic Sans MS", cursive, sans-serif;
+/*font-family: "Comic Sans MS", cursive, sans-serif;*/
+ font-family: myFirstFont;
 }
 
 
