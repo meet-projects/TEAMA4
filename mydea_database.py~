@@ -32,7 +32,7 @@ class Comment(Base):
  	id = Column(Integer, primary_key=True)
 	content= Column(String)
 	status_id = Column(Integer, ForeignKey("statuses.id"))
-	status = Relationship("Status")
+	status = relationship("Status")
 	#user_posted = Column(Integer)
 
 

@@ -160,7 +160,7 @@ def status_page (status_id):
 	if request.method == 'GET':
 		status = session.query(Status).filter_by(id = status_id).first()
 		comments = session.query(Comment).filter_by(status_id = status_id)
-		return render_template('status_page.html', comments=comments, status_id=status_id)
+		return render_template('status_page.html', comments=comments, status=status)
 	else:
 		comment=Comment(content=request.form['content'], status_id = status_id)
 		session.add(comment)

@@ -21,6 +21,7 @@
 {{s.likes}}
 </form>
 {{s.bc}}
+<br>
 <a href="/status/{{s.id}}">view comments and comment yourself!</a>
 </div>
 {%endfor%}
