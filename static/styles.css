@@ -71,11 +71,12 @@ div
 	margin-right: auto;
 	width:700px;
 	text-align:center;
+
 }
 /*for the post divs*/
 .border
 {
-	background-color: #CCFFFF;
+	background-color: #000000;
         box-shadow: inset 0 0 0 3px #19BF96;
 }
 

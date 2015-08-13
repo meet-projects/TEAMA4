@@ -3,7 +3,7 @@ app = Flask(__name__)
 
 #SQLAlchemy stuff
 from mydea_database import Base, User, Status, Comment #<--- Import your tables here!!
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, desc
 from sqlalchemy.orm import sessionmaker
 engine = create_engine('sqlite:///crudlab.db')
 Base.metadata.create_all(engine)
@@ -25,7 +25,7 @@ def main():
 @app.route('/wall/<int:user_id>')
 def wall(user_id):
 	user = session.query(User).filter_by(id=user_id).first()
-	statuses = session.query(Status).all()
+	statuses = session.query(Status).order_by(desc(Status.id)).all()
 	return render_template('mydeas_wall.html', user=user, statuses=statuses)
 
 
@@ -101,9 +101,9 @@ def add_status():
 	else:
 		print "inside post method"
 		if request.form['category']== 'entrepreneurship':
-			bc='b'
+			bc='Entrepreneurship'
 		else:
-			bc='c'
+			bc='Community'
 		new_status = Status(
 		status = request.form['status'],
 		likes = 0,
@@ -150,8 +150,10 @@ def edit_status(user_id):
 @app.route('/likes/<int:status_id>', methods=['POST'])
 def like_button (status_id):
 	if request.method == 'POST':
-		Status.filter_by(id=status_id).likes += 1
-	return redirect(url_for('wall'))
+		status = session.query(Status).filter_by(id = status_id).first()
+		status.likes += 1
+		session.commit()
+	return redirect(url_for('mydeas_wall'))
 
 
 
