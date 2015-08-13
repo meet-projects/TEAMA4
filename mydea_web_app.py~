@@ -20,12 +20,13 @@ def main():
 		user = session.query(User).filter_by(email=email, password=password).first()
 		if user == None:
 			return redirect (url_for('main'))
-		return redirect (url_for('wall'))
+		return redirect (url_for('wall',user_id=user.id))
 
-@app.route('/wall/')
-def wall():
+@app.route('/wall/<int:user_id>')
+def wall(user_id):
+	user = session.query(User).filter_by(id=user_id).first()
 	statuses = session.query(Status).all()
-	return render_template('mydeas_wall.html', statuses=statuses)
+	return render_template('mydeas_wall.html', user=user, statuses=statuses)
 
 
 
@@ -34,19 +35,25 @@ def wall():
 def add_user():
 	if request.method == 'GET':
 		return render_template('sign_up_page.html')
+		print ('00000')
 	else:
 		if 'iagree' in request.form and request.form['iagree'] == 'on':
+			print ('1111')
 			if request.form['name']== '' or request.form ['email'] == ''or request.form['password']=='':
-				return redirect(url_for('add_user'))
+				return redirect(url_for('add_user')) 
+				print ('22222')
+			print ('3333')
 			new_user = User(
 			name = request.form['name'],
 			email = request.form ['email'],
+			
 			password = request.form['password'])
 			session.add(new_user)
 			session.commit()
 			return redirect(url_for('add_mydeas'))
 		else:
  			return redirect(url_for('add_user'))
+			print ('44444')
 
 
 @app.route('/delete/<int:user_id>', methods = ['GET', 'POST'])
