@@ -34,7 +34,8 @@ By pressing the 'I Agree” button, you agree to: <br> <br>
 Act with respect and kindness to other users</p>
 <input type = "checkbox" name = "iagree"> I agree to Mydea terms and conditions<br>
 
-<input type="submit" value="Sign Up">
+<input type="submit" value="Sign Up"></t></d>
+<a href="{{url_for('main')}}"> Back </a> 
 </form>
 </div>
 

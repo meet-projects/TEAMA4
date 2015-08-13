@@ -50,7 +50,7 @@ def add_user():
 			password = request.form['password'])
 			session.add(new_user)
 			session.commit()
-			return redirect(url_for('add_mydeas'))
+			return redirect(url_for('mydeas_wall'))
 		else:
  			return redirect(url_for('add_user'))
 			print ('44444')
