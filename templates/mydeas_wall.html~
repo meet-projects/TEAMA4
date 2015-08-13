@@ -2,12 +2,12 @@
 <link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
 <body>
 <center>
-<a href="{{ url_for('wall', user_id=user.id)}}">add mydea</a>
+<a href="{{ url_for('add_status', user_id=user.id)}}">Add Mydea</a>
 </center>
 <div class = fixed>
 <img src="{{ url_for('static', filename='logo.png') }}" alt="Mydea">
 </div>
-<h1> mydeas </h1>
+<h1> Mydeas </h1>
 {%for s in statuses%}
 <div class = 'border'>
 <p>

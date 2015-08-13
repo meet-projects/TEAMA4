@@ -65,13 +65,15 @@ def delete_user(user_id):
         session.delete(user)
         return redirect(url_for('wall'))
 
-@app.route('/add', methods = ['GET', 'POST'])
+@app.route('/add2', methods = ['GET', 'POST'])
 def add_mydeas():
 	return render_template('add_mydeas_page.html')
 
 @app.route('/wall', methods = ['GET', 'POST'])
 def mydeas_wall():
-	return render_template('mydeas_wall.html')
+	statuses = session.query(Status).all()
+	user = session.query(User).filter_by(id = 1).first()
+	return render_template('mydeas_wall.html', statuses = statuses)
 
 
 @app.route('/edit/<int:user_id>', methods=['GET', 'POST'])
@@ -91,10 +93,13 @@ def edit_user(user_id):
 #Status
 @app.route('/add', methods = ['GET', 'POST'])
 def add_status():
+	print "Inside add status"
+	user = session.query(User).filter_by(id = 1).first()
 	if request.method == 'GET':
+		print "inside get method"
 		return render_template('add_mydeas_page.html')
 	else:
-		
+		print "inside post method"
 		if request.form['category']== 'entrepreneurship':
 			bc='b'
 		else:
@@ -108,8 +113,9 @@ def add_status():
 		
 		session.add(new_status)
 		session.commit()
+		print "commit successful"
 		
-        	return redirect(url_for('wall'))
+        	return redirect(url_for('mydeas_wall', user = user))
 
 @app.route('/delete/<int:status_id>', methods = ['GET', 'POST'])
 def delete_status(user_id):

@@ -34,13 +34,14 @@ new mydea:
 choose a category: <br>
 <input type="radio" name="category" value="entrepreneurship"> Entrepreneurship <br>
 <input type="radio" name="category" value="community"> Community <br>
-<input type= submit value= "post"> <br>
-
-
-
+<input type= "submit" value= "post"> <br>
 
 </form>
-<a href="mydeas_wall.html">cancel</a>
+
+
+<form action= "{{ url_for('mydeas_wall')}}" method="GET">
+<input type= submit value= "cancel"> <br>
+</form>
 </div>
 </body>
 
