@@ -155,7 +155,17 @@ def like_button (status_id):
 		session.commit()
 	return redirect(url_for('mydeas_wall'))
 
-
+@app.route('/status/<int:status_id>', methods=["GET", 'POST'])
+def status_page (status_id):
+	if request.method == 'GET':
+		status = session.query(Status).filter_by(id = status_id).first()
+		comments = session.query(Comment).filter_by(status_id = status_id)
+		return render_template('status_page.html', comments=comments, status_id=status_id)
+	else:
+		comment=Comment(content=request.form['content'], status_id = status_id)
+		session.add(comment)
+		session.commit()
+		return redirect(url_for('status_page', status_id=status_id))
 
 if __name__ == '__main__':
 	app.run(debug=True)
