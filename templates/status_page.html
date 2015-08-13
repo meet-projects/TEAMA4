@@ -1,0 +1,41 @@
+<html>
+<head> <link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}"> </head>
+<body>
+
+{{status.status}}
+<br>
+{{status.likes}} Likes
+<br>	
+Previous Comments:
+{%for c in comments%}
+
+<div class = 'border'>
+<p>
+{{c.content}}
+</p>
+</div>
+{%endfor%}
+
+<hr>
+
+<div>
+<form action= "{{ url_for('status_page', status_id=status.id)}}" method="POST">
+<h1> Comments </h1>
+Add a comment:
+<br>
+<textarea name = "content" rows="5" cols="50"></textarea>
+<br>
+<br>
+<input type= submit value= "post"> <br>
+</form>
+<a href="{{url_for('mydeas_wall')}}">Back to the wall</a>
+</div>
+
+
+
+
+
+
+</body>
+
+</html>
